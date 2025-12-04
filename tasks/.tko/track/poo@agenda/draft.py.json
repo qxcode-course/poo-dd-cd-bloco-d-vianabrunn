@@ -1,0 +1,289 @@
+{
+    "patches": [
+        {
+            "label": "2025-12-01_21-13-33",
+            "content": "@@ -263,8 +263,4 @@\n lf):\n- %0A%0A%0A\n",
+            "lines": "16"
+        },
+        {
+            "label": "2025-12-01_21-31-23",
+            "content": "@@ -64,18 +64,16 @@\n    self.\n-__\n id = id%0A\n@@ -81,26 +81,24 @@\n        self.\n-__\n number = num\n@@ -106,223 +106,8 @@\n er%0A%0A\n-        def getId (self):%0A            return self.__id%0A        %0A        def getNumber (self):%0A            return self.__number%0A        %0A        def __str__(self):%0A            return f'%7Bself.__id%7D:%7Bself.__nnumber%7D'%0A%0A\n %0A%0Acl\n@@ -167,35 +167,8 @@\n     \n-self.__fones: list%5BFone%5D=%5B%5D\n %0A   \n@@ -177,18 +177,16 @@\n    self.\n-__\n nome = n\n@@ -202,18 +202,16 @@\n    self.\n-__\n favorito\n@@ -225,513 +225,46 @@\n se%0A%0A\n-        def __str__(self):%0A            return f'%7Bself.__name%7D'%0A        %0A        def addFone (self, fone: str):%0A            self.__fones.append(fone)%0A%0A%0A%0Aclass Agenda:%0A    def __init__(self): %0A        self.__contatos: list%5BContatos%5D=%5B%5D%0A%0A        def getContatos (self):%0A            return self.__contatos%0A        %0Adef main():%0A    agenda = Agenda()%0A%0A    while True:%0A        line = input()%0A        args: list%5Bstr%5D = line.split(%22 %22)%0A        print(%22$%22 + line)%0A%0A        if args %5B0%5D == %22end%22:%0A            break%0A%0Amain()\n+%0Aclass Agenda:%0A    def __init__(self): %0A%0A%0A\n",
+            "lines": "18"
+        },
+        {
+            "label": "2025-12-02_14-38-30",
+            "content": "@@ -576,20 +576,19 @@\n , fone: \n-Fone\n+str\n ):%0A     \n@@ -978,75 +978,8 @@\n ak%0A%0A\n-        if args %5B0%5D == %22add%22:%0A            agenda.addFone(args%5B2%5D)%0A%0A\n main\n",
+            "lines": "49"
+        },
+        {
+            "label": "2025-12-02_14-49-53",
+            "content": "@@ -979,65 +979,8 @@\n ak%0A%0A\n-        if args%5B0%5D == %22show%22:%0A            print(agenda)%0A%0A\n     \n",
+            "lines": "52"
+        },
+        {
+            "label": "2025-12-02_14-50-33",
+            "content": "@@ -285,108 +285,45 @@\n     \n-fones_str = ', '.join(str(f) for f in self.__fones)%0A            return f'%7Bself.__nome%7D %5B%7Bfones_st\n+return f'%7Bself.__id%7D:%7Bself.__nnumbe\n r%7D\n-%5D\n '%0A%0A%0A\n@@ -475,68 +475,8 @@\n se%0A%0A\n-        def getNome (self):%0A            return self.__nome%0A%0A\n     \n@@ -528,17 +528,17 @@\n self.__n\n-o\n+a\n me%7D'%0A   \n@@ -580,27 +580,16 @@\n ne: Fone\n-, nome: str\n ):%0A     \n@@ -625,359 +625,8 @@\n ne)%0A\n-            for contato in self.__contatos:%0A                if Contatos.getNome() == nome:  # Acesso privado (use getter se preferir)%0A                    contato.addFone(fone)%0A                    return%0A            novo_contato = Contatos(nome)%0A            novo_contato.addFone(fone)%0A            self.__contatos.append(novo_contato)%0A                %0A%0A\n %0A%0A%0Ac\n@@ -1031,24 +1031,25 @@\n agenda)%0A\n+%0A\n         \n %0A%0Amain()\n@@ -1040,16 +1040,73 @@\n         \n+if args %5B0%5D == %22add%22:%0A            agenda.addFone(args%5B2%5D)\n %0A%0Amain()\n",
+            "lines": "55"
+        },
+        {
+            "label": "2025-12-02_15-12-58",
+            "content": "@@ -285,58 +285,109 @@\n     \n-return f'%7Bself.__id%7D:%7Bself.__number%7D'%0A            \n+fones_str = ', '.join(str(f) for f in self.__fones)%0A            return f'%7Bself.__nome%7D %5B%7Bfones_str%7D%5D'\n %0A%0A%0A%0A\n@@ -625,72 +625,8 @@\n f):%0A\n-            fones_str = ', '.join(str(f) for f in self.__fones)%0A\n     \n@@ -655,30 +655,16 @@\n .__nome%7D\n- %5B%7Bfones_str%7D%5D\n '%0A      \n@@ -695,32 +695,43 @@\n self, fone: Fone\n+, nome: str\n ):%0A            s\n@@ -771,226 +771,279 @@\n     \n-%0A                %0A%0A%0A%0A%0Aclass Agenda:%0A    def __init__(self): %0A        self.__contatos: list%5BContatos%5D=%5B%5D%0A%0A    def getContatos (self):%0A        return self.__contatos\n+for contato in self.__contatos:%0A                if Contatos.getNome() == nome:  # Acesso privado (use getter se preferir)%0A                    contato.addFone(fone)%0A                    return%0A            novo_contato = Contatos(nome)\n %0A    \n-%0A\n     \n-def addContato (self, nome: str, fone: F\n+    novo_contato.addFone(f\n one)\n-:\n %0A   \n@@ -1051,37 +1051,47 @@\n     \n-for contato in self._\n+    self.__contatos.append(novo\n _contato\n s:%0A \n@@ -1078,34 +1078,33 @@\n end(novo_contato\n-s:\n+)\n %0A            if \n@@ -1104,81 +1104,132 @@\n     \n-if Contatos.getNome() == nome:%0A                contato.addFone(fone)%0A    \n+    %0A%0A%0A%0A%0Aclass Agenda:%0A    def __init__(self): %0A        self.__contatos: list%5BContatos%5D=%5B%5D%0A%0A        def getContatos (self):%0A\n     \n@@ -1242,17 +1242,32 @@\n   return\n-%0A\n+ self.__contatos\n %0A       \n",
+            "lines": "66"
+        },
+        {
+            "label": "2025-12-02_15-21-58",
+            "content": "@@ -1150,125 +1150,8 @@\n urn%0A\n-        novo_contato = Contatos(nome)%0A        novo_contato.addFone(fone)%0A        self.__contatos.append(novo_contato)\n %0A   \n",
+            "lines": "68"
+        },
+        {
+            "label": "2025-12-02_15-22-27",
+            "content": "@@ -1524,391 +1524,8 @@\n nda)\n-%0A%0A        if args%5B0%5D == %22add%22:%0A            nome = args%5B1%5D%0A            for fone_str in args%5B2:%5D:%0A                if %22:%22 != fone_str:%0A                    print(f%22Erro: Fone '%7Bfone_str%7D' inv%C3%A1lido. Use formato id:num.%22)%0A                    continue%0A                id_fone, num = fone_str.split(%22:%22, 1)%0A                fone = Fone(id_fone, num)%0A                agenda.addFone(nome, fone)\n %0A   \n",
+            "lines": "70"
+        },
+        {
+            "label": "2025-12-02_15-24-37",
+            "content": "@@ -1616,16 +1616,165 @@\n gs%5B2:%5D:%0A\n+                if %22:%22 != fone_str:%0A                    print(f%22Erro: Fone '%7Bfone_str%7D' inv%C3%A1lido. Use formato id:num.%22)%0A                    continue%0A\n         \n",
+            "lines": "80"
+        },
+        {
+            "label": "2025-12-02_15-25-02",
+            "content": "@@ -1620,157 +1620,8 @@\n :%5D:%0A\n-                if %22:%22 != fone_str:%0A                    print(f%22Erro: Fone '%7Bfone_str%7D' inv%C3%A1lido. Use formato id:num.%22)%0A                    continue%0A\n     \n",
+            "lines": "77"
+        },
+        {
+            "label": "2025-12-02_15-25-30",
+            "content": "@@ -106,16 +106,20 @@\n number%0A%0A\n+    \n     def \n@@ -124,32 +124,36 @@\n f getId (self):%0A\n+    \n         return s\n@@ -162,32 +162,36 @@\n f.__id%0A        %0A\n+    \n     def getNumbe\n@@ -200,32 +200,36 @@\n (self):%0A        \n+    \n return self.__nu\n@@ -234,32 +234,36 @@\n number%0A        %0A\n+    \n     def __str__(\n@@ -261,32 +261,36 @@\n  __str__(self):%0A\n+    \n         return f\n@@ -483,24 +483,28 @@\n  False%0A%0A    \n+  \n+  \n def getNome \n@@ -503,32 +503,36 @@\n getNome (self):%0A\n+    \n         return s\n@@ -543,24 +543,28 @@\n __nome%0A%0A    \n+ \n+   \n def __str__(\n@@ -574,24 +574,28 @@\n f):%0A        \n+   \n+ \n fones_str = \n@@ -634,32 +634,36 @@\n _fones)%0A        \n+    \n return f'%7Bself._\n@@ -693,24 +693,28 @@\n        %0A    \n+  \n+  \n def addFone \n@@ -725,32 +725,36 @@\n f, fone: Fone):%0A\n+    \n         self.__f\n",
+            "lines": "80"
+        },
+        {
+            "label": "2025-12-02_15-41-23",
+            "content": "@@ -1005,23 +1005,24 @@\n      if \n-c\n+C\n ontato\n+s\n .getNome\n@@ -1503,144 +1503,8 @@\n d%22:%0A\n-            if len(args) %3C 3:%0A                print(%22Erro: Comando add precisa de nome e pelo menos um fone.%22)%0A                continue%0A\n     \n@@ -1591,14 +1591,10 @@\n %22:%22 \n-not in\n+!=\n  fon\n@@ -1835,23 +1835,20 @@\n enda.add\n-Contato\n+Fone\n (nome, f\n",
+            "lines": "80"
+        },
+        {
+            "label": "2025-12-02_15-45-18",
+            "content": "@@ -1214,192 +1214,8 @@\n ato)\n-%0A%0A    def __str__(self):%0A        contatos_ordenados = sorted(self.__contatos, key=lambda c: c.getNome())%0A        return '%5Cn'.join(f'- %7Bstr(contato)%7D' for contato in contatos_ordenados)\n %0A   \n",
+            "lines": "83"
+        },
+        {
+            "label": "2025-12-02_15-46-30",
+            "content": "@@ -299,18 +299,8 @@\n r%7D'%0A\n-    %0A    %0A\n     \n@@ -722,73 +722,8 @@\n one)\n-%0A%0A    def rmFone (self, num: int):%0A        del self.__fones (num)\n %0A   \n",
+            "lines": "87"
+        },
+        {
+            "label": "2025-12-02_16-15-48",
+            "content": "@@ -792,13 +792,13 @@\n nes \n-%5Bnum%5D\n+(num)\n %0A   \n",
+            "lines": "92"
+        },
+        {
+            "label": "2025-12-02_16-16-05",
+            "content": "@@ -2256,103 +2256,8 @@\n one)\n-%0A%0A        if args%5B0%5D == %22rmFone%22:%0A            num = int(args%5B1%5D)%0A            agenda.rmFone(num)\n %0A   \n",
+            "lines": "92"
+        },
+        {
+            "label": "2025-12-02_16-17-16",
+            "content": "@@ -730,24 +730,83 @@\n (fone)%0A%0A    \n+def rmFone (self, num: int):%0A        del self.__fones %5Bnum%5D\n %0A           \n@@ -1291,86 +1291,8 @@\n o)%0A%0A\n-%0A%0A    def rmFone (self, num: int, nome:str):%0A        del self.__fones %5Bnum%5D%0A%0A%0A\n     \n@@ -2290,35 +2290,8 @@\n e%22:%0A\n-            nome = args%5B0%5D%0A\n     \n",
+            "lines": "96"
+        },
+        {
+            "label": "2025-12-02_16-33-08",
+            "content": "@@ -523,65 +523,8 @@\n nome\n-%0A    %0A    def getFones(self):%0A        return self.__fones\n %0A%0A  \n@@ -735,16 +735,46 @@\n )%0A%0A    %0A\n+            %0A                %0A\n %0A%0A%0A%0Aclas\n@@ -1285,85 +1285,24 @@\n     \n-if self.Agenda.getFones() == nome:%0A            del self.__contatos.getF\n+del self.__f\n ones\n-()\n  %5Bnu\n",
+            "lines": "102"
+        },
+        {
+            "label": "2025-12-02_16-45-23",
+            "content": "@@ -2480,22 +2480,16 @@\n Fone(num\n-, nome\n )%0A      \n",
+            "lines": "104"
+        },
+        {
+            "label": "2025-12-02_16-46-10",
+            "content": "@@ -2438,23 +2438,28 @@\n   num = \n+int(\n args%5B1%5D\n+)\n %0A       \n",
+            "lines": "104"
+        },
+        {
+            "label": "2025-12-02_16-46-29",
+            "content": "@@ -1316,20 +1316,22 @@\n if self.\n-Fone\n+Agenda\n .getFone\n",
+            "lines": "104"
+        },
+        {
+            "label": "2025-12-02_16-47-01",
+            "content": "@@ -1312,29 +1312,20 @@\n     \n+i\n f \n-= None%0A        if f\n+self.Fone\n .get\n",
+            "lines": "104"
+        },
+        {
+            "label": "2025-12-02_16-47-43",
+            "content": "@@ -1308,16 +1308,106 @@\n         \n+f = None%0A        if f.getFones() == nome:%0A            del self.__contatos.getFones() %5Bnum%5D\n %0A%0A%0A    d\n@@ -2416,33 +2416,33 @@\n     nome = args%5B\n-1\n+0\n %5D%0A            nu\n@@ -2450,17 +2450,17 @@\n  = args%5B\n-2\n+1\n %5D%0A      \n",
+            "lines": "105"
+        },
+        {
+            "label": "2025-12-02_16-56-32",
+            "content": "@@ -1271,16 +1271,17 @@\n f rmFone\n+ \n (self, n\n@@ -1298,330 +1298,14 @@\n ome:\n- \n str):%0A\n-        for contato in self.__contatos:%0A            if contato.getNome() == nome:%0A                if 0 %3C= num %3C len(contato.getFones()):%0A                    contato.getFones().pop(num)%0A                else:%0A                    print(%22%C3%8Dndice inv%C3%A1lido%22)%0A                return%0A        print(%22Contato n%C3%A3o encontrado%22)%0A\n     \n",
+            "lines": "103"
+        },
+        {
+            "label": "2025-12-02_16-58-27",
+            "content": "@@ -2674,20 +2674,15 @@\n m = \n-int(\n args%5B2%5D\n-)\n %0A   \n",
+            "lines": "111"
+        },
+        {
+            "label": "2025-12-02_17-00-18",
+            "content": "@@ -1619,236 +1619,8 @@\n o%22)%0A\n-%0A%0A    def rmName(self, nome: str):%0A        for contato in self.__contatos:%0A            if contato.getNome() == nome:%0A                self.__contatos.remove(contato)%0A                return%0A        print(%22Contato n%C3%A3o encontrado%22)%0A\n     \n",
+            "lines": "111"
+        },
+        {
+            "label": "2025-12-02_17-03-34",
+            "content": "@@ -2951,100 +2951,8 @@\n ome)\n-%0A%0A        if args%5B0%5D == %22rmName%22:%0A            nome = args%5B1%5D%0A            agenda.rmName(nome)\n %0A   \n",
+            "lines": "119"
+        },
+        {
+            "label": "2025-12-02_17-04-31",
+            "content": "@@ -2974,16 +2974,20 @@\n %5D == %22rm\n+Name\n %22:%0A     \n",
+            "lines": "123"
+        },
+        {
+            "label": "2025-12-02_17-04-50",
+            "content": "@@ -2320,24 +2320,160 @@\n %5D == %22add%22:%0A\n+            if len(args) %3C 3:%0A                print(%22Erro: Comando add precisa de nome e pelo menos um fone.%22)%0A                continue%0A\n             \n",
+            "lines": "123"
+        },
+        {
+            "label": "2025-12-02_17-13-17",
+            "content": "@@ -580,67 +580,8 @@\n ones\n-%0A    %0A    def getFav(self):%0A        return self.__favoritos\n %0A%0A  \n@@ -711,65 +711,8 @@\n %7D%5D'%0A\n-    %0A    def tFav(self):%0A        self.__favoritos = True%0A\n     \n@@ -1988,48 +1988,9 @@\n n(f'\n-%7B%22@%22 if contato.getFavoritos() else %22-%22%7D\n+-\n  %7Bst\n@@ -2860,32 +2860,32 @@\n  nome = args%5B1%5D%0A\n+\n             agen\n@@ -2903,287 +2903,8 @@\n ome)\n-%0A%0A        if args%5B0%5D == %22fav%22:%0A            nome = args%5B1%5D%0A            for contato in agenda.getContatos():%0A                if contato.getNome() == nome:%0A                    contato.tFav()%0A                    break%0A            else:%0A                print(%22Contato n%C3%A3o encontrado%22)\n %0A   \n",
+            "lines": "120"
+        },
+        {
+            "label": "2025-12-03_19-53-51",
+            "content": "@@ -2122,16 +2122,22 @@\n o.getFav\n+oritos\n () else \n",
+            "lines": "135"
+        },
+        {
+            "label": "2025-12-03_19-54-25",
+            "content": "@@ -1973,563 +1973,8 @@\n   %0A%0A\n-    def search(self, texto: str):%0A        texto = texto.lower()%0A        cttSelecionados = %5B%5D%0A        for contato in self.__contatos:%0A            if contato in self.__favoritos:%0A                novo = %22@ %22 + contato.getNome().lower()%0A            %0A            else:%0A                novo = %22- %22 + contato.getNome().lower()%0A%0A            for fone in contato.getFones():%0A                novo += %22 %22 + f%22%7Bfone.getId().lower()%7D:%7Bfone.getNumber()%7D%0A%0A            if texto in novo:%0A                cttSelecionados.append(contato)%0A%0A        return cttSelecionados    %0A%0A\n %0A   \n@@ -3331,185 +3331,8 @@\n do%22)\n-%0A%0A        if args%5B0%5D == %22search%22:%0A            texto = args%5B1%5D%0A            resultados = agenda.search(texto)%0A            for contato in resultados:%0A                print(contato)\n %0A   \n",
+            "lines": "135"
+        },
+        {
+            "label": "2025-12-03_20-20-56",
+            "content": "@@ -2407,17 +2407,16 @@\n umber()%7D\n-%22\n %0A%0A      \n",
+            "lines": "159"
+        },
+        {
+            "label": "2025-12-03_20-21-23",
+            "content": "@@ -2124,25 +2124,36 @@\n  contato\n-.getFav()\n+ in self.__favoritos\n :%0A      \n",
+            "lines": "159"
+        },
+        {
+            "label": "2025-12-03_20-25-21",
+            "content": "@@ -2348,17 +2348,16 @@\n ovo += %22\n--\n  %22 + f%22%7B\n",
+            "lines": "159"
+        },
+        {
+            "label": "2025-12-03_20-25-50",
+            "content": "@@ -2469,19 +2469,22 @@\n .append(\n-nov\n+contat\n o)%0A%0A    \n",
+            "lines": "159"
+        },
+        {
+            "label": "2025-12-03_20-26-26",
+            "content": "@@ -2246,16 +2246,17 @@\n novo = %22\n+-\n  %22 + con\n@@ -2348,16 +2348,17 @@\n ovo += %22\n+-\n  %22 + f%22%7B\n",
+            "lines": "159"
+        },
+        {
+            "label": "2025-12-03_20-26-47",
+            "content": "@@ -2246,17 +2246,16 @@\n novo = %22\n--\n  %22 + con\n",
+            "lines": "159"
+        },
+        {
+            "label": "2025-12-03_20-27-10",
+            "content": "@@ -1374,73 +1374,8 @@\n to)%0A\n-        self.__contatos.sort(key=lambda c: c.getNome().lower())%0A%0A\n %0A%0A%0A \n@@ -1963,72 +1963,8 @@\n o%22)%0A\n-        self.__contatos.sort(key=lambda c: c.getNome().lower())%0A\n     \n@@ -2429,16 +2429,16 @@\n n novo:%0A\n+\n         \n@@ -2477,72 +2477,8 @@\n ovo)\n-%0A        cttSelecionados.sort(key=lambda c: c.getNome().lower())\n %0A%0A  \n",
+            "lines": "159"
+        },
+        {
+            "label": "2025-12-03_20-40-41",
+            "content": "@@ -2162,33 +2162,36 @@\n lower()%0A        \n-s\n+cttS\n elecionados = %5B%5D\n@@ -2191,17 +2191,16 @@\n os = %5B%5D%0A\n-%0A\n         \n@@ -2231,18 +2231,16 @@\n ntatos:%0A\n-%0A%0A\n         \n@@ -2247,21 +2247,57 @@\n     \n-sinal\n+if contato.getFav():%0A                novo\n  = %22@ %22 \n if c\n@@ -2292,18 +2292,17 @@\n  = %22@ %22 \n-if\n++\n  contato\n@@ -2309,49 +2309,81 @@\n .get\n-Fav() else %22- %22%0A            linha = sinal\n+Nome().lower()%0A            %0A            else:%0A                novo = %22- %22\n  + c\n@@ -2468,21 +2468,20 @@\n         \n-linha\n+novo\n  += %22 %22 \n@@ -2528,17 +2528,16 @@\n er()%7D%22%0A%0A\n-%0A\n         \n@@ -2556,13 +2556,12 @@\n  in \n-linha\n+novo\n :%0A  \n@@ -2566,33 +2566,36 @@\n                 \n-s\n+cttS\n elecionados.appe\n@@ -2601,27 +2601,22 @@\n end(\n-contat\n+nov\n o)%0A\n-%0A%0A\n         \n sele\n@@ -2611,17 +2611,20 @@\n         \n-s\n+cttS\n eleciona\n@@ -2683,17 +2683,20 @@\n  return \n-s\n+cttS\n eleciona\n",
+            "lines": "163"
+        },
+        {
+            "label": "2025-12-03_20-45-35",
+            "content": "@@ -2411,17 +2411,16 @@\n nha += %22\n--\n  %22 + f%22%7B\n",
+            "lines": "166"
+        },
+        {
+            "label": "2025-12-03_20-47-05",
+            "content": "@@ -2411,16 +2411,17 @@\n nha += %22\n+-\n  %22 + f%22%7B\n",
+            "lines": "166"
+        },
+        {
+            "label": "2025-12-03_20-48-01",
+            "content": "@@ -737,18 +737,16 @@\n eturn f'\n-- \n %7Bself.__\n",
+            "lines": "166"
+        },
+        {
+            "label": "2025-12-03_20-49-11",
+            "content": "@@ -729,32 +729,34 @@\n        return f'\n+- \n %7Bself.__nome%7D %5B%7B\n@@ -2413,12 +2413,12 @@\n nha \n++\n = %22\n--\n  %22 +\n@@ -2464,20 +2464,17 @@\n er()%7D%22%0A%0A\n-    \n+%0A\n         \n@@ -2508,28 +2508,24 @@\n             \n-    \n selecionados\n@@ -2536,41 +2536,16 @@\n end(\n-linha)%0A                    return\n+contato)\n %0A%0A%0A \n",
+            "lines": "166"
+        },
+        {
+            "label": "2025-12-03_20-51-59",
+            "content": "@@ -2407,17 +2407,16 @@\n   linha \n-+\n = %22- %22 +\n@@ -2462,17 +2462,20 @@\n er()%7D%22%0A%0A\n-%0A\n+    \n         \n@@ -2497,16 +2497,20 @@\n  linha:%0A\n+    \n         \n@@ -2544,16 +2544,43 @@\n (linha)%0A\n+                    return%0A\n %0A%0A      \n",
+            "lines": "166"
+        },
+        {
+            "label": "2025-12-03_20-53-15",
+            "content": "@@ -2411,16 +2411,17 @@\n nha += %22\n+-\n  %22 + f%22%7B\n@@ -2531,23 +2531,21 @@\n .append(\n-contato\n+linha\n )%0A%0A%0A    \n",
+            "lines": "166"
+        },
+        {
+            "label": "2025-12-03_20-53-35",
+            "content": "@@ -4161,95 +4161,21 @@\n     \n-simbolo = %22@%22 if contato.getFav() else %22-%22%0A                print(f%22%7Bsimbolo%7D %7B\n+print(\n contato\n-%7D%22\n )%0A  \n",
+            "lines": "166"
+        },
+        {
+            "label": "2025-12-03_20-55-56",
+            "content": "@@ -2221,32 +2221,34 @@\n elf.__contatos:%0A\n+%0A%0A\n             sina\n@@ -2534,24 +2534,15 @@\n end(\n-(\n contato\n-, linha)\n )%0A%0A%0A\n",
+            "lines": "167"
+        },
+        {
+            "label": "2025-12-03_21-06-16",
+            "content": "@@ -4132,23 +4132,16 @@\n  contato\n-, linha\n  in resu\n@@ -4168,19 +4168,95 @@\n     \n-print(linha\n+simbolo = %22@%22 if contato.getFav() else %22-%22%0A                print(f%22%7Bsimbolo%7D %7Bcontato%7D%22\n )%0A  \n",
+            "lines": "165"
+        },
+        {
+            "label": "2025-12-03_21-06-53",
+            "content": "@@ -2589,19 +2589,16 @@\n bda c: c\n-%5B0%5D\n .getNome\n",
+            "lines": "164"
+        },
+        {
+            "label": "2025-12-03_21-09-16",
+            "content": "@@ -2296,22 +2296,31 @@\n         \n-nome =\n+linha = sinal +\n  contato\n@@ -2343,172 +2343,8 @@\n ()%0A%0A\n-            fones_str = %22, %22.join(f%22%7Bfone.getId().lower()%7D:%7Bfone.getNumber()%7D%22 for fone in contato.getFones())%0A%0A            linha = f%22%7Bsinal%7D%7Bnome%7D %5B%7Bfones_str%7D%5D%22%0A%0A\n     \n",
+            "lines": "164"
+        },
+        {
+            "label": "2025-12-03_21-10-31",
+            "content": "@@ -2229,17 +2229,16 @@\n ntatos:%0A\n-%0A\n         \n@@ -2364,33 +2364,16 @@\n  %22.join(\n-%0A                \n f%22%7Bfone.\n@@ -2408,21 +2408,102 @@\n mber()%7D%22\n-%0A    \n+ for fone in contato.getFones())%0A%0A            linha = f%22%7Bsinal%7D%7Bnome%7D %5B%7Bfones_str%7D%5D%22%0A%0A\n         \n@@ -2540,24 +2540,14 @@\n es()\n+:\n %0A    \n-        )%0A%0A\n     \n@@ -2564,40 +2564,62 @@\n nha \n++\n = \n-f%22%7Bsinal%7D%7Bnome%7D %5B%7Bfones_str%7D%5D%22\n+%22 %22 + f%22%7Bfone.getId().lower()%7D:%7Bfone.getNumber()%7D%22%0A\n %0A%0A  \n@@ -2698,24 +2698,25 @@\n o, linha))%0A%0A\n+%0A\n         sele\n",
+            "lines": "168"
+        },
+        {
+            "label": "2025-12-03_21-11-06",
+            "content": "@@ -3829,18 +3829,17 @@\n %5B0%5D == %22\n-tF\n+f\n av%22:%0A   \n",
+            "lines": "167"
+        },
+        {
+            "label": "2025-12-03_21-12-29",
+            "content": "@@ -3830,17 +3830,17 @@\n 0%5D == %22t\n-f\n+F\n av%22:%0A   \n",
+            "lines": "167"
+        },
+        {
+            "label": "2025-12-03_21-12-52",
+            "content": "@@ -2728,183 +2728,8 @@\n    %0A\n-    %0A%0A    def showFav(self):%0A        favoritos = %5Bc for c in self.__contatos if c.getFav()%5D%0A        favoritos.sort(key=lambda c: c.getNome().lower())%0A        return favoritos%0A\n %0A%0A  \n@@ -4279,187 +4279,8 @@\n     \n-if args%5B0%5D == %22showFav%22:%0A            favoritos = agenda.showFav()%0A            for contato in favoritos:%0A                simbolo = %22@%22%0A                print(f%22%7Bsimbolo%7D %7Bcontato%7D%22)\n %0A%0Ama\n",
+            "lines": "167"
+        },
+        {
+            "label": "2025-12-03_21-15-42",
+            "content": "@@ -4469,12 +4469,15 @@\n == %22\n-f\n+showF\n av\n-s\n %22:%0A \n",
+            "lines": "177"
+        },
+        {
+            "label": "2025-12-03_21-16-08",
+            "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.__id = id\n        self.__number = number\n\n    def getId (self):\n        return self.__id\n        \n    def getNumber (self):\n        return self.__number\n        \n    def __str__(self):\n        return f'{self.__id}:{self.__number}'\n    \n    \n            \n\n\n\nclass Contatos:\n    def __init__(self, nome: str):\n        self.__fones: list[Fone]=[]\n        self.__nome = nome\n        self.__favoritos = False\n\n    def getNome (self):\n        return self.__nome\n    \n    def getFones(self):\n        return self.__fones\n    \n    def getFav(self):\n        return self.__favoritos\n\n    def __str__(self):\n        fones_str = ', '.join(str(f) for f in self.__fones)\n        return f'{self.__nome} [{fones_str}]'\n    \n    def tFav(self):\n        self.__favoritos = True\n        \n    def addFone (self, fone: Fone):\n        self.__fones.append(fone)\n\n    \n\n\n\n\nclass Agenda:\n    def __init__(self): \n        self.__contatos: list[Contatos]=[]\n\n    def getContatos (self):\n        return self.__contatos\n    \n    def addContato (self, nome: str, fone: Fone):\n        for contato in self.__contatos:\n            if contato.getNome() == nome:\n                contato.addFone(fone)\n                return\n        novo_contato = Contatos(nome)\n        novo_contato.addFone(fone)\n        self.__contatos.append(novo_contato)\n        self.__contatos.sort(key=lambda c: c.getNome().lower())\n\n\n\n\n    def rmFone(self, num: int, nome: str):\n        for contato in self.__contatos:\n            if contato.getNome() == nome:\n                if 0 <= num < len(contato.getFones()):\n                    contato.getFones().pop(num)\n                else:\n                    print(\"\u00cdndice inv\u00e1lido\")\n                return\n        print(\"Contato n\u00e3o encontrado\")\n\n\n    def rmName(self, nome: str):\n        for contato in self.__contatos:\n            if contato.getNome() == nome:\n                self.__contatos.remove(contato)\n                return\n        print(\"Contato n\u00e3o encontrado\")\n        self.__contatos.sort(key=lambda c: c.getNome().lower())\n        \n\n    def search(self, texto: str):\n        texto = texto.lower()\n        selecionados = []\n\n        for contato in self.__contatos:\n\n            sinal = \"@ \" if contato.getFav() else \"- \"\n            nome = contato.getNome().lower()\n\n            fones_str = \", \".join(\n                f\"{fone.getId().lower()}:{fone.getNumber()}\"\n                for fone in contato.getFones()\n            )\n\n            linha = f\"{sinal}{nome} [{fones_str}]\"\n\n            if texto in linha:\n                selecionados.append((contato, linha))\n\n        selecionados.sort(key=lambda c: c[0].getNome().lower())\n\n        return selecionados    \n    \n\n    def showFav(self):\n        favoritos = [c for c in self.__contatos if c.getFav()]\n        favoritos.sort(key=lambda c: c.getNome().lower())\n        return favoritos\n\n\n    def __str__(self):\n        contatos_ordenados = sorted(self.__contatos, key=lambda c: c.getNome())\n        return '\\n'.join(f'{\"@\" if contato.getFav() else \"-\"} {str(contato)}' for contato in contatos_ordenados)\n        \ndef main():\n    agenda = Agenda()\n\n    while True:\n        line = input()\n        args: list[str] = line.split(\" \")\n        print(\"$\" + line)\n\n        if args [0] == \"end\":\n            break\n\n        if args[0] == \"show\":\n            print(agenda)\n\n        if args[0] == \"add\":\n            nome = args[1]\n            for fone_str in args[2:]:\n                if \":\" not in fone_str:\n                    print(f\"Erro: Fone '{fone_str}' inv\u00e1lido. Use formato id:num.\")\n                    continue\n                id_fone, num = fone_str.split(\":\", 1)\n                fone = Fone(id_fone, num)\n                agenda.addContato(nome, fone)\n\n        if args[0] == \"rmFone\":\n            nome = args[1]\n            num = int(args[2])\n            agenda.rmFone(num, nome)\n\n        if args[0] == \"rm\":\n            nome = args[1]\n            agenda.rmName(nome)\n\n        if args[0] == \"tfav\":\n            nome = args[1]\n            for contato in agenda.getContatos():\n                if contato.getNome() == nome:\n                    contato.tFav()\n                    break\n            else:\n                print(\"Contato n\u00e3o encontrado\")\n\n        if args[0] == \"search\":\n            texto = args[1]\n            resultados = agenda.search(texto)\n            for contato, linha in resultados:\n                print(linha)\n        if args[0] == \"favs\":\n            favoritos = agenda.showFav()\n            for contato in favoritos:\n                simbolo = \"@\"\n                print(f\"{simbolo} {contato}\")\n\nmain()",
+            "lines": "177"
+        }
+    ]
+}
